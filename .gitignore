@@ -1,5 +1,8 @@
 ##node_modules
 /node_modules
 
-##yarn.lock
+## lock Thiago
 /yarn.lock
+
+## lock Rainer
+/package-lock.json
