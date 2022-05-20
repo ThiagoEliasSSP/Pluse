@@ -2,20 +2,16 @@ const AlunoRepository = require('../repositories/AlunoRepository')
 
 class AlunoController {
   async index(requeste, response) {
-    const contacts = await ContactRepository.findAll();
+    const contacts = await AlunoRepository.findAll();
 
     return response.json(contacts);
   }
 
   async show(request, response) {
-    const { id } = request.params;
-    const contact = await ContactRepository.findById(id);
+    const { email } = request.params;
+    const contacts = await AlunoRepository.findByEmail(email);
 
-    if (!contact) {
-      return response.status(404).json({ error: 'Contact Not Found' });
-    }
-
-    return response.json(contact);
+    return response.json(contacts);
   };
 
   async store(request, response) {
@@ -25,24 +21,36 @@ class AlunoController {
       return response.status(400).json({ error: 'Name is Required' });
     }
 
-    const contactExists = await ContactRepository.findByEmail(email);
-
-    if (contactExists) {
-      return response.status(400).json({ error: 'This is e-mail already in use' });
+    if (!phone) {
+      return response.status(400).json({ error: 'Phone is Required' });
     }
 
-    const contact = await ContactRepository.create({
-      name, email, phone, category_id
-    });
+    if (!email) {
+      return response.status(400).json({ error: 'Email is Required' });
+    }
 
-    return response.send(request.body)
+    // const contactExistsPhone = await AlunoRepository.findByPhone(phone);
+    // const contactExistsEmail = await AlunoRepository.findByEmail(email);
+
+    // if (!contactExistsPhone) {
+    //   return response.status(400).json({ error: 'This is phone already in use' });
+    // }
+
+    // if (!contactExistsEmail) {
+    //   return response.status(400).json({ error: 'This is e-mail already in use' });
+    // }
+
+    const contact = await AlunoRepository.create({ name, email, phone, category_id });
+
+    return response.send(contact)
   }
 
   async update(request, response) {
-    const { id } = request.params;
-    const { name, email, phone, category_id } = request.body;
+    const { email } = request.params;
+    const { name, phone, category_id } = request.body;
 
-    const contactExists = await ContactRepository.findById(id);
+    const contactExists = await AlunoRepository.findByEmail(email);
+
     if (!contactExists) {
       return response.status(404).json({ error: 'Contact Not Found' });
     }
@@ -51,28 +59,23 @@ class AlunoController {
       return response.status(400).json({ error: 'Name is Required' });
     }
 
-    const contactByEmail = await ContactRepository.findByEmail(email);
-
-    if (contactByEmail && contactByEmail.id !== id) {
-      return response.status(400).json({ error: 'This is e-mail already in use' });
-    }
-
-    const contact = await ContactRepository.update(id, {  name, email, phone, category_id });
+    const contact = await AlunoRepository.update({ name, email, phone, category_id });
 
     response.json(contact);
   }
 
   async delete(request, response) {
     // Deletar um registro
-    const { id } = request.params;
-    const contact = await ContactRepository.findById(id);
+    const { email } = request.params;
+    const contact = await ContactRepository.findByEmail(email);
 
     if (!contact) {
       return response.status(404).json({ error: 'Contact Not Found' });
     }
 
-    await ContactRepository.delete(id);
-    return response.sendStatus(204);
+    await AlunoRepository.delete(contact);
+
+    response.json(contact);
   }
 }
 

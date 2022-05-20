@@ -8,10 +8,10 @@ const router = Router();
 
 // Rotas para o Endpoint Aluno
 router.get('/aluno', AlunoController.index);
-router.get('/aluno/:id', AlunoController.show);
-router.delete('/aluno/:id', AlunoController.delete);
+router.get('/aluno/:email', AlunoController.show);
+router.delete('/aluno/:email', AlunoController.delete);
 router.post('/aluno', AlunoController.store);
-router.put('/aluno/:id', AlunoController.update);
+router.put('/aluno/:email', AlunoController.update);
 
 // Rotas para o Endpoint Atividade
 router.get('/atividade', AtividadeController.index);
