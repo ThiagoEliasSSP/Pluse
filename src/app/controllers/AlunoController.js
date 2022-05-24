@@ -8,8 +8,12 @@ class AlunoController {
   }
 
   async show(request, response) {
-    const { email } = request.params;
-    const contacts = await AlunoRepository.findByEmail(email);
+    const { id } = request.params;
+    const contacts = await AlunoRepository.findById(id);
+
+    if (!contacts) {
+      return response.status(404).json({ error: 'Contact Not Found' });
+    }
 
     return response.json(contacts);
   };
@@ -21,24 +25,19 @@ class AlunoController {
       return response.status(400).json({ error: 'Name is Required' });
     }
 
-    if (!phone) {
-      return response.status(400).json({ error: 'Phone is Required' });
-    }
-
     if (!email) {
       return response.status(400).json({ error: 'Email is Required' });
     }
 
-    // const contactExistsPhone = await AlunoRepository.findByPhone(phone);
-    // const contactExistsEmail = await AlunoRepository.findByEmail(email);
+    if (!phone) {
+      return response.status(400).json({ error: 'Phone is Required' });
+    }
 
-    // if (!contactExistsPhone) {
-    //   return response.status(400).json({ error: 'This is phone already in use' });
-    // }
+    const contactExistsEmail = await AlunoRepository.findByEmail(email);
 
-    // if (!contactExistsEmail) {
-    //   return response.status(400).json({ error: 'This is e-mail already in use' });
-    // }
+    if (!contactExistsEmail) {
+      return response.status(400).json({ error: 'This is e-mail already in use' });
+    }
 
     const contact = await AlunoRepository.create({ name, email, phone, category_id });
 
@@ -46,10 +45,10 @@ class AlunoController {
   }
 
   async update(request, response) {
-    const { email } = request.params;
-    const { name, phone, category_id } = request.body;
+    const { id } = request.params;
+    const { name, phone, category_id, email } = request.body;
 
-    const contactExists = await AlunoRepository.findByEmail(email);
+    const contactExists = await AlunoRepository.findById(id);
 
     if (!contactExists) {
       return response.status(404).json({ error: 'Contact Not Found' });
@@ -65,15 +64,14 @@ class AlunoController {
   }
 
   async delete(request, response) {
-    // Deletar um registro
-    const { email } = request.params;
-    const contact = await ContactRepository.findByEmail(email);
+    const { id } = request.params;
+    const contact = await AlunoRepository.findById(id);
 
     if (!contact) {
       return response.status(404).json({ error: 'Contact Not Found' });
     }
 
-    await AlunoRepository.delete(contact);
+    await AlunoRepository.delete(id);
 
     response.json(contact);
   }

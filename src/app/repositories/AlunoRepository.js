@@ -1,8 +1,8 @@
 const db = require('../../database')
 class AlunoRepository {
   async findAll() {
-    const row = await db.query(`SELECT * FROM alunos`)
-    return row
+    const rows = await db.query(`SELECT * FROM alunos;`)
+    return rows;
   }
 
   async findById(id) {
@@ -15,17 +15,9 @@ class AlunoRepository {
     return row
   }
 
-  async findByPhone(phone) {
-    const row = await db.query(`SELECT * FROM alunos WHERE celular = $1`, [phone])
-    return row
-  }
-  async delete(email) {
-    const row = await db.query(`
-    DELETE FROM alunos
-      WHERE email = $1
-      RETURNING *
-    `, [email])
-    return row
+  async delete(id) {
+    const deleteOp = await db.query('DELETE FROM alunos WHERE id_aluno = $1', [id])
+    return deleteOp;
   }
 
   async create({ name, email, phone, category_id }) {
