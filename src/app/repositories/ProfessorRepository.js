@@ -1,61 +1,50 @@
-
+const db = require('../../database')
 class ProfessorRepository {
-    findAll() {
-      return new Promise((resolve) => resolve(contacts));
-    }
-  
-    findById(id) {
-      return new Promise((resolve) => resolve(
-        contacts.find((contact) => contact.id === id),
-      ));
-    }
-  
-    findByEmail(email) {
-      return new Promise((resolve) => resolve(
-        contacts.find((contact) => contact.email === email),
-      ));
-    }
-  
-    delete(id) {
-      return new Promise((resolve) => {
-        contacts = contacts.filter((contact) => contact.id !== id);
-        resolve();
-      });
-    }
-  
-    create({ name, email, phone, category_id }) {
-      return new Promise((resolve) => {
-        const newContact = {
-          id: v4(),
-          name,
-          email,
-          phone,
-          category_id,
-        };
-  
-        contacts.push(newContact);
-        resolve(newContact);
-      });
-    }
-  
-    update(id, { name, email, phone, category_id }) {
-      return new Promise((resolve) => {
-        const updatedContact = {
-          id,
-          name,
-          email,
-          phone,
-          category_id,
-        };
-  
-        contacts = contacts.map((contact) => {
-          return contact.id === id ? updatedContact : contact
-        });
-  
-        resolve(updatedContact);
-      });
-    }
+  async findAll(orderBy = 'ASC') {
+    const direction = orderBy.toUpperCase() === 'DESC' ? 'DESC' : 'ASC';
+    const rows = await db.query(`SELECT * FROM professores ORDER BY nome ${direction}`);
+    return rows;
   }
-  
-  module.exports = new ProfessorRepository();
-  
+
+  async findById(id) {
+    const [row] = await db.query(`SELECT * FROM professores WHERE id_professor = $1`, [id]);
+    return row
+  }
+
+  async findByEmail(email) {
+    const [row] = await db.query(`SELECT * FROM professores WHERE email = $1`, [email]);
+    return row
+  }
+
+  async findByPhone(phone) {
+    const [row] = await db.query(`SELECT * FROM professores WHERE celular = $1`, [phone]);
+    return row
+  }
+
+  async delete(id) {
+    const [row] = await db.query('DELETE FROM professores WHERE id_professor = $1 RETURNING *', [id]);
+    return row;
+  }
+
+  async create({ name, email, phone}) {
+    const [row] = await db.query(`
+        INSERT INTO professores(email, nome, celular) VALUES ($1, $2, $3)
+        RETURNING *
+      `, [email, name, phone]);
+
+    return row
+  }
+
+  async update({ id, name, email, phone }) {
+    const [row] = await db.query(`
+        UPDATE professores
+        SET nome = $2, email = $3, celular = $4
+        WHERE id_professor = $1
+        RETURNING *
+      `, [id, name, email, phone])
+
+    return row;
+  }
+}
+
+module.exports = new ProfessorRepository();

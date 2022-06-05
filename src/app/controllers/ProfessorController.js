@@ -2,77 +2,91 @@ const ProfessorRepository = require('../repositories/ProfessorRepository')
 
 class ProfessorController {
   async index(requeste, response) {
-    const contacts = await ContactRepository.findAll();
+    const { orderBy } = requeste.query
+    const contacts = await ProfessorRepository.findAll(orderBy);
 
     return response.json(contacts);
   }
 
   async show(request, response) {
     const { id } = request.params;
-    const contact = await ContactRepository.findById(id);
+    const contact = await ProfessorRepository.findById(id);
 
     if (!contact) {
-      return response.status(404).json({ error: 'Contact Not Found' });
+      return response.status(404).json({ error: 'Contato não encontrado' });
     }
 
     return response.json(contact);
   };
 
   async store(request, response) {
-    const { name, email, phone, category_id } = request.body;
+    const { name, email, phone } = request.body;
 
     if (!name) {
-      return response.status(400).json({ error: 'Name is Required' });
-    }
+      return response.status(400).json({ error: 'O nome é obrigatório' });
+    };
 
-    const contactExists = await ContactRepository.findByEmail(email);
+    if (!email) {
+      return response.status(400).json({ error: 'O email é obrigatório' });
+    };
 
-    if (contactExists) {
-      return response.status(400).json({ error: 'This is e-mail already in use' });
-    }
+    const contactExistsEmail = await ProfessorRepository.findByEmail(email);
 
-    const contact = await ContactRepository.create({
-      name, email, phone, category_id
-    });
+    if (contactExistsEmail) {
+      return response.status(400).json({ error: 'Este email já está cadastrado' });
+    };
 
-    return response.send(request.body)
+    if (!phone) {
+      return response.status(400).json({ error: 'O phone é obrigatório' });
+    };
+
+    const contactExistsPhone = await ProfessorRepository.findByPhone(phone);
+
+    if (contactExistsPhone) {
+      return response.status(400).json({ error: 'Este número de celular já está cadastrado' });
+    };
+
+    const contact = await ProfessorRepository.create({ name, email, phone });
+    return response.status(200).json([contact, { message: 'Professor cadastrado com exito' }]);
   }
 
   async update(request, response) {
     const { id } = request.params;
-    const { name, email, phone, category_id } = request.body;
+    const { name, email, phone } = request.body;
 
-    const contactExists = await ContactRepository.findById(id);
+    const contactExists = await ProfessorRepository.findById(id);
+
     if (!contactExists) {
-      return response.status(404).json({ error: 'Contact Not Found' });
+      return response.status(404).json({ error: 'Contato não encontrado' });
     }
 
     if (!name) {
-      return response.status(400).json({ error: 'Name is Required' });
+      return response.status(400).json({ error: 'O nome é obrigatório' });
     }
 
-    const contactByEmail = await ContactRepository.findByEmail(email);
-
-    if (contactByEmail && contactByEmail.id !== id) {
-      return response.status(400).json({ error: 'This is e-mail already in use' });
+    if (!email) {
+      return response.status(400).json({ error: 'O email é obrigatório' });
     }
 
-    const contact = await ContactRepository.update(id, {  name, email, phone, category_id });
+    if (!phone) {
+      return response.status(400).json({ error: 'O celular é obrigatório' });
+    }
 
-    response.json(contact);
+    const contact = await ProfessorRepository.update({ id, name, email, phone });
+    return response.json(contact);
   }
 
   async delete(request, response) {
-    // Deletar um registro
     const { id } = request.params;
-    const contact = await ContactRepository.findById(id);
+    const contactExists = await ProfessorRepository.findById(id);
 
-    if (!contact) {
-      return response.status(404).json({ error: 'Contact Not Found' });
-    }
+    if (!contactExists) {
+      return response.status(400).json({ error: 'Aluno não encontrado' });
+    };
 
-    await ContactRepository.delete(id);
-    return response.sendStatus(204);
+    const contact = await ProfessorRepository.delete(id);
+
+    return response.status(200).json([contact, { message: 'Aluno Deletado com exito' }]);
   }
 }
 

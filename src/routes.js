@@ -14,17 +14,17 @@ router.post('/aluno', AlunoController.store);
 router.put('/aluno/:id', AlunoController.update);
 
 // Rotas para o Endpoint Atividade
-// router.get('/atividade', AtividadeController.index);
-// router.get('/atividade/:id', AtividadeController.show);
-// router.delete('/atividade/:id', AtividadeController.delete);
-// router.post('/atividade', AtividadeController.store);
-// router.put('/atividade/:id', AtividadeController.update);
+router.get('/atividade', AtividadeController.index);
+router.get('/atividade/:idAluno', AtividadeController.show);
+router.delete('/atividade/:id', AtividadeController.delete);
+router.post('/atividade/:idAluno', AtividadeController.store);
+router.put('/atividade/:id', AtividadeController.update);
 
 // Rotas para o Endpoint Professor
-// router.get('/professor', ProfessorController.index);
-// router.get('/professor/:id', ProfessorController.show);
-// router.delete('/professor/:id', ProfessorController.delete);
-// router.post('/professor', ProfessorController.store);
-// router.put('/professor/:id', ProfessorController.update);
+router.get('/professor', ProfessorController.index);
+router.get('/professor/:id', ProfessorController.show);
+router.delete('/professor/:id', ProfessorController.delete);
+router.post('/professor', ProfessorController.store);
+router.put('/professor/:id', ProfessorController.update);
 
 module.exports = router;
