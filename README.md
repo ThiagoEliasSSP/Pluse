@@ -2,7 +2,7 @@
 
 Plusle é um sistema responsável por registrar alunos e suas horas complementares, possibilitando com que os professores possam avaliar e validar as horas registradas pelos alunos.
 
-![Logo](https://github.com/ThiagoEliasSSP/Plusle/issues/1#issue-1268687201)
+![Logo](https://user-images.githubusercontent.com/64434954/173251353-b960acfd-2aae-4b94-881a-183f6d545ee1.png)
 
 O objetivo do projeto é facilitar o processo de registro de horas complementares. Dado que o aluno esteja cadastrado no sistema, já poderá registrar suas atividades extracurriculares e aguardar para que um professor também cadastrado no sistema poderá avaliar e aprovar horas dos alunos.
 
@@ -30,7 +30,7 @@ Equipe (nosso time, demaisss!):
 | [RF09] Estado de atividades registradas |  O sistema deve permitir que o aluno o estado das atividades. |
 | [RF010] Aprovação de horas |  O sistema deve permitir que o professor possa aprovar/desaprovar atividades cadastradas pelo aluno. |
 
-![use_case](https://github.com/ThiagoEliasSSP/Plusle/issues/1#issuecomment-1153279701)
+![use_case](https://user-images.githubusercontent.com/64434954/173251375-4ab635cc-44c3-4030-b739-80c605302901.png)
 > Use Case
 
 #### REQUISITOS NAO FUNCIONAIS
@@ -63,38 +63,30 @@ Equipe (nosso time, demaisss!):
 
 As principais entidades do sistema estão no diagrama de classe (UML) abaixo, incluindo também seus relacionamentos de colaboração e de generalização.
 
-![tschool_modelo_banco](https://github.com/ThiagoEliasSSP/Plusle/issues/1#issuecomment-1153279888)
+![tschool_modelo_banco](https://user-images.githubusercontent.com/64434954/173251387-7a0c98ef-3e95-4f24-a833-2acf524dc2e1.png)
 > Diagrama de classe para as principais entidades do sistema
 
 Abaixo os diagramas de banco de dados. As principais entidades do sistema segundo as apresentações no modelo físico.
 
-![tschool_modelo_banco_dados](https://github.com/ThiagoEliasSSP/Plusle/issues/1#issuecomment-1153279969)
+![tschool_modelo_banco_dados](https://user-images.githubusercontent.com/64434954/173251399-df729054-59c8-434a-9523-ff0e4a803542.png)
 > Modelo entidade relacionamento
 
 #### RESULTADOS
 
 Abaixo uma sequência de imagens que mostram o protótipo desenvolvido.
 
-![Tela-Inicial-Login](https://user-images.githubusercontent.com/34111297/70012793-4d81a680-1554-11ea-96a8-2e1c3ab38b43.jpg)
+![login](https://user-images.githubusercontent.com/64434954/173251580-03a6bbf5-133f-41a2-8349-d939656980c3.png)
+![login](https://user-images.githubusercontent.com/64434954/173251582-ba065fdd-41e3-4c78-9727-85043d537ef4.png)
 
-![Login](https://user-images.githubusercontent.com/34111297/70012956-cb45b200-1554-11ea-9982-265d87d03118.png)](<https://github.com/ThiagoEliasSSP/Plusle/issues/1#issuecomment-1153281508>)
-> Tela mobile de apresentação e de login
+> Tela exemplo de visualização das atividades
 
 Agora uma sequência de imagens demonstrando algumas telas do sistema no módulo web.
 
 Entre as principais características estão a preocupação com uso de cores, posicionamento das imagens e facilidade de uso através de componentes baseados em cards, type fonte bem apresentáveis e estética, como um todo, adequada ao contexto do sistema.
 
-![TSCHOOL_WEB_TELALOGIN](https://user-images.githubusercontent.com/2241850/111889093-0fb2c680-89c1-11eb-9c52-908b9127dd91.png)
-> Tela de acesso do sistema
-
-Tela de gestão dos eventos. Nela o administrador pode controlar todos os eventos do sistema. Algumas operações são baseadas e limitadas por algumas regras de negócio, por exemplo  um evento não pode ser cancelado muito próximo ao início do evento.
-
-![TSCHOOL_WEB_EVENTOS](https://user-images.githubusercontent.com/2241850/111889101-1b9e8880-89c1-11eb-9757-c4a3e4bacdde.png)
-> Tela de gestão e controle de eventos
-
 #### INSTALAÇÃO
 
-###### script para estrutura de banco
+##### script para estrutura de banco
 
 ```java
 CREATE DATABASE Plusle;
