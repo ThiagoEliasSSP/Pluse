@@ -2,7 +2,7 @@
 
 Plusle é um sistema responsável por registrar alunos e suas horas complementares, possibilitando com que os professores possam avaliar e validar as horas registradas pelos alunos.
 
-<img src="https://ibb.co/nrsp2hD">
+![Logo](https://github.com/ThiagoEliasSSP/Plusle/issues/1#issue-1268687201)
 
 O objetivo do projeto é facilitar o processo de registro de horas complementares. Dado que o aluno esteja cadastrado no sistema, já poderá registrar suas atividades extracurriculares e aguardar para que um professor também cadastrado no sistema poderá avaliar e aprovar horas dos alunos.
 
@@ -30,7 +30,7 @@ Equipe (nosso time, demaisss!):
 | [RF09] Estado de atividades registradas |  O sistema deve permitir que o aluno o estado das atividades. |
 | [RF010] Aprovação de horas |  O sistema deve permitir que o professor possa aprovar/desaprovar atividades cadastradas pelo aluno. |
 
-![use_case](https://ibb.co/2dd27cS)
+![use_case](https://github.com/ThiagoEliasSSP/Plusle/issues/1#issuecomment-1153279701)
 > Use Case
 
 #### REQUISITOS NAO FUNCIONAIS
@@ -63,23 +63,21 @@ Equipe (nosso time, demaisss!):
 
 As principais entidades do sistema estão no diagrama de classe (UML) abaixo, incluindo também seus relacionamentos de colaboração e de generalização.
 
-![tschool_modelo_banco](https://ibb.co/HnsMvYB)
+![tschool_modelo_banco](https://github.com/ThiagoEliasSSP/Plusle/issues/1#issuecomment-1153279888)
 > Diagrama de classe para as principais entidades do sistema
 
 Abaixo os diagramas de banco de dados. As principais entidades do sistema segundo as apresentações no modelo físico.
 
-![tschool_modelo_banco_dados](https://ibb.co/whGFCB5)
+![tschool_modelo_banco_dados](https://github.com/ThiagoEliasSSP/Plusle/issues/1#issuecomment-1153279969)
 > Modelo entidade relacionamento
 
 #### RESULTADOS
 
 Abaixo uma sequência de imagens que mostram o protótipo desenvolvido.
 
-Na primeira sequência, o módulo móvel, interface exclusiva para os usuários responsáveis no sistema, ou seja, os pais/responsáveis dos alunos, participantes de eventos.
+![Tela-Inicial-Login](https://user-images.githubusercontent.com/34111297/70012793-4d81a680-1554-11ea-96a8-2e1c3ab38b43.jpg)
 
-Através desse módulo os usuários responsáveis de alunos podem ser informados de eventos planejados pela escola, e consecutivamente confirmar ou rejeitar a participação de seus respectivos no passeio (saída pedagógica).
-
-![Tela-Inicial-Login](https://user-images.githubusercontent.com/34111297/70012793-4d81a680-1554-11ea-96a8-2e1c3ab38b43.jpg)      ![Login](https://user-images.githubusercontent.com/34111297/70012956-cb45b200-1554-11ea-9982-265d87d03118.png)
+![Login](https://user-images.githubusercontent.com/34111297/70012956-cb45b200-1554-11ea-9982-265d87d03118.png)](<https://github.com/ThiagoEliasSSP/Plusle/issues/1#issuecomment-1153281508>)
 > Tela mobile de apresentação e de login
 
 Agora uma sequência de imagens demonstrando algumas telas do sistema no módulo web.
@@ -93,16 +91,6 @@ Tela de gestão dos eventos. Nela o administrador pode controlar todos os evento
 
 ![TSCHOOL_WEB_EVENTOS](https://user-images.githubusercontent.com/2241850/111889101-1b9e8880-89c1-11eb-9757-c4a3e4bacdde.png)
 > Tela de gestão e controle de eventos
-
-Nesta tela o administrador do sistema possui uma visão detalhada do evento, por exemplo, tendo uma ideia da quantidade e quem são os participantes do evento, principalmente se inteirando do status de aceitação de cada participante.
-
-![TSCHOOL_WEB_LISTA_PARTICIPANTES](https://user-images.githubusercontent.com/2241850/111889094-15101100-89c1-11eb-8f12-d153d8a87fca.png)
-> Listagem de participantes de um evento
-
-De acordo com alguns controles de negócio, o administrador pode remover ou cancelar um determinado evento. É uma evolução do sistema a inclusão de um sistema de notificação para os demais participantes "confirmados" de acordo com o cancelamento do evento.
-
-![TSCHOOL_WEB_DELETAREVENTO](https://user-images.githubusercontent.com/2241850/111889098-18a39800-89c1-11eb-9e03-2ddc994c7c69.png)
-> Removendo ou cancelando um evento do sistema
 
 #### INSTALAÇÃO
 
@@ -159,11 +147,9 @@ CREATE TABLE IF NOT EXISTS atividades (
 
 ```
 
-#### REFERÊNCIAS, mais informações
+#### Extras
 
 - <https://trello.com/b/m7TEyWMi/pi-unasp>
 - <https://www.figma.com/file/FkvgqeY9CFyTPMaG1kR10O/Login?node-id=0%3A1>
-- <https://www.figma.com/file/FkvgqeY9CFyTPMaG1kR10O/TSchool?node-id=186%3A2>
-- <https://github.com/BF20199/Tschool---UNASP>
 
 > TSchool, é show!
