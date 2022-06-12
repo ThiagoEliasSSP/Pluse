@@ -2,7 +2,7 @@
 
 Plusle é um sistema responsável por registrar alunos e suas horas complementares, possibilitando com que os professores possam avaliar e validar as horas registradas pelos alunos.
 
-![Logo](https://ibb.co/nrsp2hD)
+<img src="https://ibb.co/nrsp2hD">
 
 O objetivo do projeto é facilitar o processo de registro de horas complementares. Dado que o aluno esteja cadastrado no sistema, já poderá registrar suas atividades extracurriculares e aguardar para que um professor também cadastrado no sistema poderá avaliar e aprovar horas dos alunos.
 
