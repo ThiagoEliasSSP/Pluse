@@ -108,7 +108,7 @@ De acordo com alguns controles de negócio, o administrador pode remover ou canc
 
 ###### script para estrutura de banco
 
-```postgresql
+```java
 CREATE DATABASE Plusle;
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
