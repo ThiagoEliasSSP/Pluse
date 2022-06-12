@@ -108,58 +108,53 @@ De acordo com alguns controles de negócio, o administrador pode remover ou canc
 
 ###### script para estrutura de banco
 
-```java
-create table classes(
- id_classe integer,
- numero_alunos integer,
- periodo nvarchar(20),
- primary key(id_classe)
+```postgresql
+CREATE DATABASE Plusle;
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE IF NOT EXISTS cursos (
+  id_curso UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
+  nome VARCHAR NOT NULL,
+  maximo_horas INT
 );
 
-create table escola(
- id_escola integer,
- nome_escola nvarchar(50),
- cep nvarchar(20),
- numero_alunos integer,
- id_classe integer,
- foreign key(id_classe) references classes(id_classe)
+CREATE TABLE IF NOT EXISTS alunos (
+  id_aluno UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
+  email VARCHAR NOT NULL UNIQUE,
+  nome VARCHAR NOT NULL,
+  celular VARCHAR NOT NULL UNIQUE,
+  id_curso UUID,
+  horas_totais INT,
+  horas_acumuladas INT,
+  FOREIGN KEY(id_curso) REFERENCES cursos(id_curso)
 );
 
-create table evento(
- id_evento integer,
- danielpatronum8_evento date,
- horario_evento time,
- local_evento nvarchar(30),
- primary key(id_evento)
+CREATE TABLE IF NOT EXISTS professores (
+  id_professor UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
+  email VARCHAR NOT NULL UNIQUE,
+  nome VARCHAR NOT NULL,
+  celular VARCHAR NOT NULL UNIQUE
 );
 
-create table aluno(
- ra_aluno integer,
- nome_aluno nvarchar(30),
- idade integer,
- primary key(ra_aluno)
+CREATE TABLE IF NOT EXISTS categoria_atividades (
+  id_categoria UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
+  nome VARCHAR NOT NULL,
+  maximo_horas INT
 );
 
-create table participantes(
- ra_aluno integer,
- id_classe integer,
- foreign key(ra_aluno) references aluno(ra_aluno),
- foreign key(id_classe) references classes(id_classe)
-);
-
-create table responsaveis(
- id_responsavel integer,
- cpf integer,
- nome_responsavel nvarchar(40),
- cep nvarchar(20),
- primary key(id_responsavel)
-);
-
-create table possui(
- id_responsavel integer,
- ra_aluno integer,
- foreign key(id_responsavel) references responsaveis(id_responsavel),
- foreign key(ra_aluno) references aluno(ra_aluno)
+CREATE TABLE IF NOT EXISTS atividades (
+  id_atividade UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
+  arquivo VARCHAR NOT NULL,
+  nome VARCHAR NOT NULL,
+  horas VARCHAR NOT NULL,
+  status VARCHAR NOT NULL,
+  id_aluno UUID,
+  id_professor UUID,
+  id_categoria UUID,
+  FOREIGN KEY(id_aluno) REFERENCES alunos(id_aluno),
+  FOREIGN KEY(id_professor) REFERENCES professores(id_professor),
+  FOREIGN KEY(id_categoria) REFERENCES categoria_atividades(id_categoria)
 );
 
 ```
