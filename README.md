@@ -61,6 +61,11 @@ Equipe (nosso time, demaisss!):
 
 - Postgres
 
+##### Extra
+
+- Docker
+- Insomnia
+
 As principais entidades do sistema estão no diagrama de classe (UML) abaixo, incluindo também seus relacionamentos de colaboração e de generalização.
 
 ![tschool_modelo_banco](https://user-images.githubusercontent.com/64434954/173251387-7a0c98ef-3e95-4f24-a833-2acf524dc2e1.png)
@@ -73,18 +78,17 @@ Abaixo os diagramas de banco de dados. As principais entidades do sistema segund
 
 #### RESULTADOS
 
-Abaixo uma sequência de imagens que mostram o protótipo desenvolvido.
+Abaixo uma sequência de imagens que mostram o protótipo desenvolvido:
 
-![login](https://user-images.githubusercontent.com/64434954/173251580-03a6bbf5-133f-41a2-8349-d939656980c3.png)
-![login](https://user-images.githubusercontent.com/64434954/173251582-ba065fdd-41e3-4c78-9727-85043d537ef4.png)
+![atividades](https://user-images.githubusercontent.com/64434954/173251580-03a6bbf5-133f-41a2-8349-d939656980c3.png)
+![cadastros-atividades](https://user-images.githubusercontent.com/64434954/173251582-ba065fdd-41e3-4c78-9727-85043d537ef4.png)
 
 > Tela exemplo de visualização das atividades
 
-Agora uma sequência de imagens demonstrando algumas telas do sistema no módulo web.
+Agora a baixo segue uma gif demonstrativa das requisições no insominia:
+![exemplo-pratico]()
 
-Entre as principais características estão a preocupação com uso de cores, posicionamento das imagens e facilidade de uso através de componentes baseados em cards, type fonte bem apresentáveis e estética, como um todo, adequada ao contexto do sistema.
-
-#### INSTALAÇÃO
+#### INSTALAÇÃO DO BANCO DE DADOS
 
 ##### script para estrutura de banco
 
@@ -138,10 +142,3 @@ CREATE TABLE IF NOT EXISTS atividades (
 );
 
 ```
-
-#### Extras
-
-- <https://trello.com/b/m7TEyWMi/pi-unasp>
-- <https://www.figma.com/file/FkvgqeY9CFyTPMaG1kR10O/Login?node-id=0%3A1>
-
-> TSchool, é show!
